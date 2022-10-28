@@ -10,6 +10,7 @@ import Profile from './components/pages/Profile'
 import Register from './components/pages/Register'
 import Navbar from './components/partials/Navbar'
 import EditProfile from './components/pages/EditProfile'
+import Home from './components/pages/Home'
 import './App.css'
 import jwt_decode from 'jwt-decode'
 
@@ -72,9 +73,13 @@ function App() {
             path="/:username/edit"
             element={currentUser ? <EditProfile handleLogout={handleLogout}/> : <Navigate to="/" />}
           />
+            <Route 
+              path = "/home"
+              element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            />
            <Route 
             path="/*"
-            element={<Navigate to="/" />}
+            element={<Navigate to="/home" />}
           />
         </Routes>
       </div>
