@@ -41,6 +41,7 @@ function App() {
       setCurrentUser(null)
     }
   }
+  
 
   return (
     <Router>
@@ -59,7 +60,7 @@ function App() {
           />
 
           <Route 
-            path="/"
+            path="/Login"
             element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
 
@@ -74,7 +75,7 @@ function App() {
             element={currentUser ? <EditProfile handleLogout={handleLogout}/> : <Navigate to="/" />}
           />
             <Route 
-              path = "/home"
+              path = "/"
               element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} />}
             />
            <Route 
