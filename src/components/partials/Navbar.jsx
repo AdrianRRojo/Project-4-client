@@ -1,6 +1,3 @@
-import { Link } from 'react-router-dom'
-
-
 export default function Navbar({ currentUser, handleLogout }) {
 	let username = ''
 
@@ -9,12 +6,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 	}
 	const navbar = () => {
 		return (
-			// <>
-			// <nav class="navbar navbar-dark bg-dark">
-			// <Link to="/profile">Profile</Link>
-			// <Link to="/login" onClick={handleLogout}>Logout</Link>
-			// </nav>
-			// </>
+
 			<nav class="navbar navbar-expand-lg bg-dark">
   				<div class="container-fluid">
     			<a class="navbar-brand whiteFont" href="/">Home</a>

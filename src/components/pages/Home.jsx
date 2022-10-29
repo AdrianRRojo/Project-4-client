@@ -30,43 +30,7 @@ useEffect(() => {
       });
   }, []);
 
-  useEffect(() => {
-    const apiKey = process.env.REACT_APP_API_KEY
-    fetch(`https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/gainers?apiKey=${apiKey}`)
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(
-            `This is an HTTP error: The status is ${response.status}`
-            );
-        }
-        return response.json();
-    })
-    .then((actualData) => {
-        setGainers(actualData);
-        console.log('gainers', actualData);
-        setError(null);
-    })
-    .catch((err) => {
-        setError(err.message);
-        setGainers(null);
-    })
-    .finally(() => {
-        setLoading(false);
-    });
-    }, []);
-    
-// data.map((item, index) => {
-//     <div>
-//         <h1>{item.tickers}</h1>
-//         <h1>{item.title}</h1>
-//         <p>{item.publisher}</p>
-//         <p>{item.description}</p>
-//         <p>{item.article_url}</p>
-//         <p>{item.image_url}</p>
-//         <p>{item.published_utc}</p>
 
-//     </div>
-// })
 console.log(data)
 const renderData = () => {
     if (loading) {
@@ -108,29 +72,6 @@ const renderData = () => {
             })
         }
     }
-const renderGainers = () => {
-    if (loading) {
-        return <p>Loading...</p>;
-        }
-        if (error) {
-        return <p>{error}</p>;
-        }
-        if (gainers) {
-            return gainers.tickers.map((item, index) => {
-                return (
-                    <div key={index}>
-                       <table className="table table-dark table-striped">
-                       <tr className="table-dark">{item.ticker}
-                       <td className="table-dark">{item.todaysChangePerc}</td>
-                       </tr>
-
-                        </table>
-                       </div>
-                )
-            })
-        }
-    }
-
 
     return(
         <body>
@@ -141,20 +82,19 @@ const renderGainers = () => {
         <div>{`There is a problem fetching the post data - ${error}`}</div>
       )}
 
-        {data && (
+        {data && ( 
             <div>
-                {renderData()}
-            
             <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
             </div>
+            {renderData()}
             </div>
             
         
         )}
-
+        
         </div>
-
+        
      </body>   
     )
 
