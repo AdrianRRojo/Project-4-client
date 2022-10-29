@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-
+import '../../App.css'
 export default function Home(){
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -53,27 +53,37 @@ const renderData = () => {
                 return (
                     <div key={index}>
 
-                        <a href={item.article_url} target="_blank" rel="noreferrer">
-                        <h1> [ {item.tickers} ] - {item.title}</h1>
-                        </a>
-                        <a href={item.publisher.homepage_url}>
-                        <p>{item.publisher.name}</p> 
-                        <img styles={{width: '20px'}} src={item.publisher.logo_url} alt={item.publisher.name} />
-                        </a>
-                        
+                        {/* <a href={item.article_url} target="_blank" rel="noreferrer">
+                        <h2 > <img className="newsPic" src={item.publisher.logo_url} alt={item.publisher.name} /> [ {item.tickers} ]  -  {item.title}</h2>
+                        </a>                        
                         <h3>{item.description}</h3>
-                        <img src={item.image_url} alt={item.title} styles={{width:'50px'}}/>
+                        <img src={item.image_url} alt={item.title} />
                         <a href={item.article_url} target="_blank" rel="noreferrer">Read More</a>
-                        <p>{item.published_utc}</p>                        
-                        
+                        <p>{item.published_utc}</p>                         */}
+                        <div className="row row-cols-2 row-cols-md-2 g-4">
+                            <div className="col">
+                             <div className="card">
+                                <img src={item.image_url} className="card-img-top" alt={item.title}/>
+                                <img className="newsPic" src={item.publisher.logo_url} alt={item.publisher.name} />
+                                 <div className="card-body">
+                                    
+                                    <h5 className="card-title">[ {item.tickers} ]  -  {item.title}</h5>
+                                   
+                                    <p className="card-text">{item.description}</p>
+                                    <a href={item.article_url} target="_blank" rel="noreferrer" className="btn btn-dark">Read More</a>
+                                    <p className="card-text"><small className="text-muted">{item.published_utc}</small></p>
+                                 </div>
+                            </div>
+                        </div>
                     </div>
+                   </div>
                 )
             })
         }
     }
     return(
         <div className="App">
-        <h1>Home</h1>
+
         {loading && <div>A moment please...</div>}
       {error && (
         <div>{`There is a problem fetching the post data - ${error}`}</div>
@@ -82,5 +92,8 @@ const renderData = () => {
       {renderData()}
       </ul>
       </div>
+      
+ 
     )
+
 }

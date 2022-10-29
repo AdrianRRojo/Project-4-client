@@ -7,7 +7,8 @@ export default function Navbar({ currentUser, handleLogout }) {
 	if(currentUser){
 		username = currentUser.username
 	}
-	const loggedIn = (
+	const loggedIn = () => {
+		
 		<nav className='navbar navbar-expand-md navbar-dark'>
 			<div className='container navBarCont'>
 				<button className='navbar-toggler ms-auto' type= 'button' data-bs-toggle='collapse' data-bs-target='#navmenu'>
@@ -35,8 +36,8 @@ export default function Navbar({ currentUser, handleLogout }) {
 		</nav>
 		
 		
-		)
 		
+	}
 		
 		
 		const loggedOut = (
@@ -47,7 +48,8 @@ export default function Navbar({ currentUser, handleLogout }) {
 		 <div>
 				{/* user always sees this section */}
 				
-				{currentUser ? loggedIn : loggedOut}
+				{loggedIn()}
+				
 		</div>
 	)
 }
