@@ -72,7 +72,21 @@ const renderData = () => {
             })
         }
     }
+const renderNews = () => {
+    if (loading) {
+        return <p>Loading...</p>;
 
+        }
+        if (error) {
+        return <p>{error}</p>;
+        }
+     return(
+        <div>
+            
+        </div>
+
+     )
+    }
     return(
         <body>
         <div className="App">
