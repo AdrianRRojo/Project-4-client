@@ -4,6 +4,7 @@ export default function Home(){
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [gainers, setGainers] = useState(null);
 useEffect(() => {
     // console.log(`api key fdsfsdfsd ${ process.env.REACT_APP_API_KEY}`)
     const apiKey = process.env.REACT_APP_API_KEY
@@ -28,6 +29,32 @@ useEffect(() => {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    const apiKey = process.env.REACT_APP_API_KEY
+    fetch(`https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/gainers?apiKey=${apiKey}`)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+            );
+        }
+        return response.json();
+    })
+    .then((actualData) => {
+        setGainers(actualData);
+        console.log('gainers', actualData);
+        setError(null);
+    })
+    .catch((err) => {
+        setError(err.message);
+        setGainers(null);
+    })
+    .finally(() => {
+        setLoading(false);
+    });
+    }, []);
+    
 // data.map((item, index) => {
 //     <div>
 //         <h1>{item.tickers}</h1>
@@ -81,19 +108,54 @@ const renderData = () => {
             })
         }
     }
+const renderGainers = () => {
+    if (loading) {
+        return <p>Loading...</p>;
+        }
+        if (error) {
+        return <p>{error}</p>;
+        }
+        if (gainers) {
+            return gainers.tickers.map((item, index) => {
+                return (
+                    <div key={index}>
+                       <table className="table table-dark table-striped">
+                       <tr className="table-dark">{item.ticker}
+                       <td className="table-dark">{item.todaysChangePerc}</td>
+                       </tr>
+
+                        </table>
+                       </div>
+                )
+            })
+        }
+    }
+
+
     return(
+        <body>
         <div className="App">
 
         {loading && <div>A moment please...</div>}
       {error && (
         <div>{`There is a problem fetching the post data - ${error}`}</div>
       )}
-      <ul>
-      {renderData()}
-      </ul>
-      </div>
-      
- 
+
+        {data && (
+            <div>
+                {renderData()}
+            
+            <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            </div>
+            </div>
+            
+        
+        )}
+
+        </div>
+
+     </body>   
     )
 
 }
