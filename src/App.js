@@ -11,6 +11,8 @@ import Register from './components/pages/Register'
 import Navbar from './components/partials/Navbar'
 import EditProfile from './components/pages/EditProfile'
 import Home from './components/pages/Home'
+import News from './components/pages/News'
+
 import './App.css'
 import jwt_decode from 'jwt-decode'
 
@@ -18,7 +20,6 @@ import jwt_decode from 'jwt-decode'
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('jwt')? jwt_decode(localStorage.getItem('jwt')): null)
-
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
     // check to see if token is in storage
@@ -41,7 +42,6 @@ function App() {
       setCurrentUser(null)
     }
   }
-  
 
   return (
     <Router>
@@ -80,8 +80,13 @@ function App() {
             />
            <Route 
             path="/*"
-            element={<Navigate to="/home" />}
-          />
+            element={<Navigate to="/" />}
+          /> 
+          <Route 
+          path="/news"
+          element={<News />}
+        />
+
         </Routes>
       </div>
     </Router>
