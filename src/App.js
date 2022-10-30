@@ -50,8 +50,9 @@ function App() {
           currentUser={currentUser}
           handleLogout={handleLogout}
         />
+       
       </header>
-
+      
       <div className="App">
         <Routes>
           <Route 
