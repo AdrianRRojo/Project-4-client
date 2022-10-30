@@ -45,13 +45,12 @@ function App() {
 
   return (
     <Router>
-      <header>
+
         <Navbar 
           currentUser={currentUser}
           handleLogout={handleLogout}
         />
        
-      </header>
       
       <div className="App">
         <Routes>

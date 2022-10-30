@@ -51,13 +51,4 @@
 .whiteFont{
   color: white;
 }
-.text {
-  order: 1;
-}
-.news{
-  order: 2
-}
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
+
