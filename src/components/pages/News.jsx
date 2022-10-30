@@ -43,31 +43,30 @@ const renderData = () => {
             return data.map((item, index) => {
                 return (
                     <div key={index}>
+                        <div class="card mb-3" style={{maxWidth: "100%"}}>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src={item.image_url} class="img-fluid rounded-start" alt={item.title}/>
+      
+    </div>
+    <div class="col-md-8">
+        
+      <div class="card-body">
+      <img className="newsPic" src={item.publisher.logo_url} alt={item.publisher.name} />
+        <h5 class="card-title">[{`${item.tickers}`}] - {item.title}</h5>
+        
+        <p class="card-text">{item.description}</p>
+        
+        
+        <a href={item.article_url} target="_blank" rel="noreferrer" className="btn btn-dark">Read More</a>
+        <p className="card-text"><small className="text-muted">{item.published_utc}</small></p>
 
-                        {/* <a href={item.article_url} target="_blank" rel="noreferrer">
-                        <h2 > <img className="newsPic" src={item.publisher.logo_url} alt={item.publisher.name} /> [ {item.tickers} ]  -  {item.title}</h2>
-                        </a>                        
-                        <h3>{item.description}</h3>
-                        <img src={item.image_url} alt={item.title} />
-                        <a href={item.article_url} target="_blank" rel="noreferrer">Read More</a>
-                        <p>{item.published_utc}</p>                         */}
-                        <div className="row row-cols-2 row-cols-md-2 g-4">
-                            <div className="col">
-                             <div className="card">
-                                <img src={item.image_url} className="card-img-top" alt={item.title}/>
-                                <img className="newsPic" src={item.publisher.logo_url} alt={item.publisher.name} />
-                                 <div className="card-body">
-                                    
-                                    <h5 className="card-title">[ {item.tickers} ]  -  {item.title}</h5>
-                                   
-                                    {/* <p className="card-text">{item.description}</p> */}
-                                    <a href={item.article_url} target="_blank" rel="noreferrer" className="btn btn-dark">Read More</a>
-                                    <p className="card-text"><small className="text-muted">{item.published_utc}</small></p>
-                                 </div>
-                            </div>
-                        </div>
+      </div>
+    </div>
+  </div>
+</div>
                     </div>
-                   </div>
+                    
                 )
             })
         }
@@ -89,19 +88,21 @@ const renderNews = () => {
     }
     return(
         <body>
-        <div className="App">
+        <div className="news">
 
         {loading && <div>A moment please...</div>}
       {error && (
         <div>{`There is a problem fetching the post data - ${error}`}</div>
       )}
 
-        {data && ( 
-            renderData()
-        )}
+         
+            {renderData()}
+        
         
         </div>
-        
+        <div>
+            <p className="text">NEWS</p>
+        </div>
      </body>   
     )
 

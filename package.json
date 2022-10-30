@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.2",
+    "bulma": "^0.9.4",
+    "cirrus-ui": "^0.7.0-patch.1",
     "cloudinary": "^1.32.0",
     "cloudinary-react": "^1.8.1",
     "dotenv": "^16.0.3",

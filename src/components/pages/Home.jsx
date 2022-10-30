@@ -94,7 +94,7 @@ const renderData = () => {
           
             <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/" rel="noopener" target="_blank"></a>
+                    <div class="tradingview-widget-copyright">
             </div>
             </div>
             </div>
