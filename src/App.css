@@ -51,4 +51,9 @@
 .whiteFont{
   color: white;
 }
-
+.text {
+  order: 1;
+}
+.news{
+  order: 2
+}
